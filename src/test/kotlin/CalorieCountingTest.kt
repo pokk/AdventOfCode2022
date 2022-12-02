@@ -1,3 +1,4 @@
+import kotlin.test.assertEquals
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
@@ -5,14 +6,33 @@ import org.junit.jupiter.params.provider.MethodSource
 class CalorieCountingTest {
     companion object {
         @JvmStatic
-        fun files() = listOf(
-            Arguments.of("day1-input-1.txt"),
+        fun firstParams() = listOf(
+            Arguments.of("day1-input-sample.txt", 24000),
+            Arguments.of("day1-input-1.txt", 71506),
+        )
+
+        @JvmStatic
+        fun secondParams() = listOf(
+            Arguments.of("day1-input-sample.txt", 45000),
+            Arguments.of("day1-input-1.txt", 209603),
         )
     }
 
     @ParameterizedTest
-    @MethodSource("files")
-    fun `testing simple input`(fileName: String) {
+    @MethodSource("firstParams")
+    fun `testing part1 question`(fileName: String, expected: Long) {
+        val calories = elvesCalories(fileName)
+        assertEquals(expected, CalorieCounting().part1(calories))
+    }
+
+    @ParameterizedTest
+    @MethodSource("secondParams")
+    fun `testing part2 question`(fileName: String, expected: Long) {
+        val calories = elvesCalories(fileName)
+        assertEquals(expected, CalorieCounting().part2(calories))
+    }
+
+    private fun elvesCalories(fileName: String): MutableList<Long> {
         val calories = mutableListOf<Long>()
         var calorie = 0L
 
@@ -24,7 +44,7 @@ class CalorieCountingTest {
             calories.add(calorie)
             calorie = 0
         }
-
-        println(CalorieCounting().solution(calories))
+        calories.add(calorie)
+        return calories
     }
 }

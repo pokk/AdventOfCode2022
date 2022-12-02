@@ -1,3 +1,5 @@
+import java.util.PriorityQueue
+
 /**
  * [--- Day 1: Calorie Counting ---](https://adventofcode.com/2022/day/1)
  *
@@ -40,7 +42,17 @@
  * */
 
 class CalorieCounting {
-    fun solution(elves: List<Long>): Long {
+    fun part1(elves: List<Long>): Long {
         return elves.max()
+    }
+
+    fun part2(elves: List<Long>): Long {
+//        return elves.sorted().takeLast(3).sum()
+        val heap = PriorityQueue<Long>()
+        elves.forEach {
+            heap.add(it)
+            while (heap.size > 3) heap.remove()
+        }
+        return heap.sum()
     }
 }
