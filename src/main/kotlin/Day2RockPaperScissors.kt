@@ -1,4 +1,4 @@
-class RockPaperScissors {
+class Day2RockPaperScissors {
     enum class Comparison {
         Rock {
             override fun weakTo() = Paper

@@ -22,14 +22,14 @@ class CalorieCountingTest {
     @MethodSource("firstParams")
     fun `testing part1 question`(fileName: String, expected: Long) {
         val calories = elvesCalories(fileName)
-        assertEquals(expected, CalorieCounting().part1(calories))
+        assertEquals(expected, Day1CalorieCounting().part1(calories))
     }
 
     @ParameterizedTest
     @MethodSource("secondParams")
     fun `testing part2 question`(fileName: String, expected: Long) {
         val calories = elvesCalories(fileName)
-        assertEquals(expected, CalorieCounting().part2(calories))
+        assertEquals(expected, Day1CalorieCounting().part2(calories))
     }
 
     private fun elvesCalories(fileName: String): MutableList<Long> {

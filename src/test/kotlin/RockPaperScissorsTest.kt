@@ -25,18 +25,18 @@ class RockPaperScissorsTest {
     @MethodSource("firstParams")
     fun `testing part1 question`(fileName: String, expected: Long) {
         val list = goEachRound(fileName)
-        assertEquals(expected, RockPaperScissors().part1(list[0], list[1]))
+        assertEquals(expected, Day2RockPaperScissors().part1(list[0], list[1]))
     }
 
     @ParameterizedTest
     @MethodSource("secondParams")
     fun `testing part2 question`(fileName: String, expected: Long) {
         val list = goEachRound(fileName)
-        assertEquals(expected, RockPaperScissors().part2(list[0], list[1]))
+        assertEquals(expected, Day2RockPaperScissors().part2(list[0], list[1]))
     }
 
     private fun goEachRound(fileName: String): List<List<Char>> {
-        val list = listOf(mutableListOf<Char>(), mutableListOf<Char>())
+        val list = listOf(mutableListOf<Char>(), mutableListOf())
         readFileWithNewLineFromResources(fileName) {
             val strs = it.toCharArray()
             list[0].add(strs[0])

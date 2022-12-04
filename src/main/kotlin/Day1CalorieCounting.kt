@@ -41,7 +41,7 @@ import java.util.PriorityQueue
  * Find the Elf carrying the most Calories. How many total Calories is that Elf carrying?
  * */
 
-class CalorieCounting {
+class Day1CalorieCounting {
     fun part1(elves: List<Long>): Long {
         return elves.max()
     }
