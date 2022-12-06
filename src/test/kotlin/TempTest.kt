@@ -24,18 +24,18 @@ class TempTest {
     @ParameterizedTest
     @MethodSource("firstParams")
     fun `testing part1 question`(fileName: String, expected: Long) {
-        val list = template(fileName)
+        val list = parse(fileName)
         assertEquals(expected, TODO())
     }
 
     @ParameterizedTest
     @MethodSource("secondParams")
     fun `testing part2 question`(fileName: String, expected: Long) {
-        val list = template(fileName)
+        val list = parse(fileName)
         assertEquals(expected, TODO())
     }
 
-    private fun template(fileName: String): MutableList<String> {
+    private fun parse(fileName: String): MutableList<String> {
         val list = mutableListOf<String>()
         readFileWithNewLineFromResources(fileName, list::add)
         return list
