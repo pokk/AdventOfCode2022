@@ -17,7 +17,7 @@ class Day8TreetopTreeHouseTest {
         @JvmStatic
         fun secondParams() = listOf(
             Arguments.of(SAMPLE_FILE, 8),
-            Arguments.of(TEST_FILE, 209603),
+            Arguments.of(TEST_FILE, 374400),
         )
     }
 
