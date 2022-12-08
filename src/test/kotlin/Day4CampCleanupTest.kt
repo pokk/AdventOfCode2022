@@ -3,7 +3,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 
-class CampCleanupTest {
+class Day4CampCleanupTest {
     companion object {
         private const val SAMPLE_FILE = "day4-input-sample.txt"
         private const val TEST_FILE = "day4-input-1.txt"
