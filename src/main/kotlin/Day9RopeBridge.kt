@@ -47,35 +47,39 @@ class Day9RopeBridge {
                 repeat(steps.toInt()) {
                     head.move(go)
                     if (!head.inAround(tail)) {
-                        when (direction) {
-                            "D" -> {
-                                tail.x = head.x + 1
-                                tail.y = head.y
-                            }
-
-                            "R" -> {
-                                tail.x = head.x
-                                tail.y = head.y - 1
-                            }
-
-                            "U" -> {
-                                tail.x = head.x - 1
-                                tail.y = head.y
-                            }
-
-                            "L" -> {
-                                tail.x = head.x
-                                tail.y = head.y + 1
-                            }
-                        }
-                        visited[tail.toString()] = visited.getOrDefault(tail.toString(), 0) + 1
+                        tail.move(alignMove(tail, head))
                     }
+                    visited[tail.toString()] = visited.getOrDefault(tail.toString(), 0) + 1
                 }
             }
         return visited.values.size.toLong()
     }
 
     fun part2(commands: List<String>): Long {
-        TODO()
+        val visited = mutableSetOf<String>()
+        val head = Position(0, 0)
+        var bodies = mutableListOf(head)
+        repeat(9) { bodies.add(Position(0, 0)) }
+        visited.add(head.toString())
+        commands.map { it.split(" ") }
+            .forEach { (direction, steps) ->
+                val go = requireNotNull(dirMap[direction])
+                repeat((steps.toInt())) {
+                    head.move(go)
+                    for (index in 1..bodies.lastIndex) {
+                        val prev = bodies[index - 1]
+                        val body = bodies[index]
+                        if (!prev.inAround(body))
+                            body.move(alignMove(body, prev))
+                    }
+                    visited.add(bodies[bodies.size - 1].toString())
+                }
+            }
+
+        return visited.size.toLong()
+    }
+
+    private fun alignMove(position: Position, nextPosition: Position): List<Int> {
+        return listOf((nextPosition.x - position.x).coerceIn(-1, 1), (nextPosition.y - position.y).coerceIn(-1, 1))
     }
 }

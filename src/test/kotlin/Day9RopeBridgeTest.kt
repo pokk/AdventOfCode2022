@@ -16,8 +16,8 @@ class Day9RopeBridgeTest {
 
         @JvmStatic
         fun secondParams() = listOf(
-            Arguments.of(SAMPLE_FILE, 8),
-            Arguments.of(TEST_FILE, 374400),
+            Arguments.of(SAMPLE_FILE, 1),
+            Arguments.of(TEST_FILE, 2557),
         )
     }
 
